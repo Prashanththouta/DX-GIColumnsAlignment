@@ -1,0 +1,34 @@
+ <div class="dx-fieldset container">
+  <div class="dx-field child" *ngFor="let col of dummyColumns">
+    <div class="dx-field-label"> {{col}} </div>
+      <div class="dx-field-value">
+        <dx-text-box></dx-text-box>
+      </div>
+  </div>
+</div>
+<dx-tab-panel
+        [dataSource]="tabs"
+        itemTitleTemplate="title"
+        itemTemplate="item"
+        [deferRendering]="false"
+        [showNavButtons]="true"
+        [animationEnabled]="true">
+        <div *dxTemplate="let content of 'title'">
+            <span> {{content}} </span>
+            <i class="dx-icon dx-icon-close" (click)="closeButtonHandler(content)"></i>
+        </div>
+        <div *dxTemplate="let tab of 'item'">
+            <dx-data-grid
+                [dataSource]="[]"
+                [showBorders]="true"
+                [showColumnLines]="true"
+                [rowAlternationEnabled]="true"
+                [columnAutoWidth]="true">
+                    <dxo-editing 
+                    [allowAdding]="true" >
+
+                    </dxo-editing>
+                    <dxi-column [dataField]="col"  *ngFor="let col of dummyColumns"></dxi-column>
+            </dx-data-grid>
+        </div>
+    </dx-tab-panel>

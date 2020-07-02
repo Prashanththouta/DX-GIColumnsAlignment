@@ -1,0 +1,10 @@
+.container {
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.child {
+  display: inline-block;
+  padding: 14px;
+  width: 250px;
+}
